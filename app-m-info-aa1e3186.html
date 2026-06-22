@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 再访 · 留存</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(145deg, #ffe9cd 0%, #fdd6ae 40%, #fbc8a0 70%, #f7b891 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.2rem;
+      line-height: 1.7;
+      color: #3a2e28;
+    }
+
+    .card {
+      max-width: 820px;
+      width: 100%;
+      background: #fffcf9;
+      border-radius: 48px 48px 36px 36px;
+      padding: 3rem 2.8rem;
+      box-shadow: 0 16px 40px rgba(180, 110, 60, 0.20), 0 6px 14px rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s ease;
+      backdrop-filter: blur(1px);
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 2rem 1.5rem;
+        border-radius: 32px;
+      }
+    }
+
+    /* 开场短句 · 克制叙事 */
+    .opening {
+      font-size: 1.25rem;
+      font-weight: 430;
+      letter-spacing: 0.02em;
+      border-left: 5px solid #d99c7a;
+      padding-left: 1.1rem;
+      margin-bottom: 2rem;
+      color: #4d372b;
+      background: #fcf3eb;
+      border-radius: 0 18px 18px 0;
+      padding: 0.9rem 1.6rem 0.9rem 1.8rem;
+      max-width: 90%;
+    }
+
+    .opening strong {
+      font-weight: 600;
+      color: #a15e3a;
+    }
+
+    h1 {
+      font-size: 2.3rem;
+      font-weight: 540;
+      letter-spacing: -0.02em;
+      margin: 0.6rem 0 1.8rem 0;
+      color: #412f25;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem;
+    }
+
+    h1 span {
+      font-weight: 380;
+      font-size: 1.5rem;
+      color: #7b5f4b;
+      margin-left: 0.25rem;
+    }
+
+    .subhead {
+      font-size: 1.05rem;
+      color: #5e4537;
+      margin-bottom: 2.4rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid #ead7ca;
+      line-height: 1.8;
+    }
+
+    .subhead a {
+      color: #9b5f3f;
+      text-decoration: none;
+      font-weight: 530;
+      background: #f7ede6;
+      padding: 0.05rem 0.3rem;
+      border-radius: 14px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .subhead a:hover {
+      background: #dbaa89;
+      color: #281e18;
+    }
+
+    /* 承接段落 / 再次访问 & 收藏 */
+    .recap {
+      background: #f8efe9;
+      border-radius: 28px;
+      padding: 1.8rem 2rem;
+      margin-bottom: 2.6rem;
+      color: #3b2d24;
+      box-shadow: inset 0 1px 6px rgba(255, 215, 180, 0.4);
+    }
+
+    .recap p {
+      margin-bottom: 1rem;
+    }
+
+    .recap p:last-child {
+      margin-bottom: 0;
+    }
+
+    .recap strong {
+      color: #9e6b4c;
+      font-weight: 560;
+    }
+
+    /* 特点列表：圆角按钮感链接 + 温和卡片 */
+    .features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.4rem;
+      margin: 2.2rem 0 2.8rem 0;
+    }
+
+    @media (max-width: 560px) {
+      .features {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+      }
+    }
+
+    .feature-item {
+      background: #faf3ed;
+      border-radius: 60px 24px 24px 60px;
+      padding: 0.85rem 1.6rem 0.85rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem 0.8rem;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 6px rgba(150, 90, 55, 0.06);
+      border: 1px solid #f5e3d6;
+      transition: background 0.2s, box-shadow 0.2s;
+      color: #3b2b20;
+      font-size: 0.98rem;
+    }
+
+    .feature-item:hover {
+      background: #f5e4d9;
+      box-shadow: 0 4px 12px rgba(175, 105, 60, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+      filter: drop-shadow(0 2px 2px rgba(100, 50, 20, 0.08));
+    }
+
+    .feature-label {
+      font-weight: 490;
+      letter-spacing: 0.01em;
+      margin-right: 0.1rem;
+    }
+
+    .feature-desc {
+      font-weight: 400;
+      opacity: 0.82;
+      font-size: 0.92rem;
+    }
+
+    /* 温和结尾 + 场景提示 */
+    .closing-note {
+      margin-top: 2rem;
+      padding: 1.6rem 2rem 1.8rem 2rem;
+      background: #f2e4d9;
+      border-radius: 40px 12px 40px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .closing-note p {
+      font-size: 1rem;
+      color: #3a2b20;
+    }
+
+    .closing-note .highlight {
+      background: #dbb69d;
+      color: #2a1e17;
+      padding: 0.1rem 0.6rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-right: 0.3rem;
+    }
+
+    .faq-mini {
+      margin-top: 2rem;
+      border-top: 1px dashed #dcc9bb;
+      padding-top: 1.4rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .faq-mini span {
+      background: #f3e7df;
+      padding: 0.3rem 1rem 0.35rem 1rem;
+      border-radius: 60px;
+      font-size: 0.86rem;
+      color: #4f382b;
+      border: 1px solid #eedacb;
+      cursor: default;
+    }
+
+    .faq-mini span::before {
+      content: "∎ ";
+      font-weight: 600;
+      color: #a47458;
+    }
+
+    .footer-remark {
+      margin-top: 1.8rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #7a6151;
+      opacity: 0.7;
+      letter-spacing: 0.03em;
+    }
+
+    .footer-remark a {
+      color: #5f3d2c;
+      text-decoration: none;
+      border-bottom: 1px dotted #d5b29b;
+    }
+
+    .footer-remark a:hover {
+      border-bottom: 1px solid #6f442b;
+    }
+
+    strong a {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="opening">
+      <strong>·</strong> 再次打开熟悉的页面，收藏夹里始终留着一个位置。
+    </div>
+
+    <h1>
+      爱游戏
+      <span>· 持续关注</span>
+    </h1>
+
+    <div class="subhead">
+      一个汇聚多样题材与休闲体验的内容站点，不追逐浮夸口号，只在意每一次浏览是否顺手、信息是否清晰。
+      如果你曾访问过 <a href="https://app-m-i-game.com.cn">爱游戏</a>，便会发现它始终保持着克制的更新节奏与平实的界面风格。
+    </div>
+
+    <!-- 承接段落：再次访问与收藏视角 -->
+    <div class="recap">
+      <p><strong>◈ 再访的理由</strong> —— 不需要每次重新适应布局，也不需要反复辨认入口。结构稳定、导航直接，这是许多人将它留在收藏夹的原因。</p>
+      <p><strong>◈ 收藏后的默契</strong> —— 一段时间后回来，依然能找到之前感兴趣的栏目，新内容也不会淹没旧信息。页面不堆砌弹窗或强制跳转，浏览节奏由你掌控。</p>
+    </div>
+
+    <!-- 特点列表：圆角按钮感链接（真实功能描述） -->
+    <div class="features">
+      <div class="feature-item">
+        <span class="feature-icon">🎮</span>
+        <span class="feature-label">游戏分类</span>
+        <span class="feature-desc">· 轻量、模拟、策略</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">📋</span>
+        <span class="feature-label">资讯聚合</span>
+        <span class="feature-desc">· 版本动态 · 备忘</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔖</span>
+        <span class="feature-label">收藏友好</span>
+        <span class="feature-desc">· 直达 · 低干扰</span>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🔄</span>
+        <span class="feature-label">持续迭代</span>
+        <span class="feature-desc">· 非频繁 · 有章法</span>
+      </div>
+    </div>
+
+    <!-- 温和结尾 + 场景提示 -->
+    <div class="closing-note">
+      <p><span class="highlight">场景</span> 工作间隙、通勤途中、或是睡前几分钟 —— 打开收藏夹里的 <a href="https://app-m-i-game.com.cn" style="color:#874f2f; font-weight:530; text-decoration:none; border-bottom:1px solid #c68f6f;">爱游戏</a>，浏览几则更新，或是随意翻翻分类，不需要登录或注册也能获取基本信息。</p>
+      <p><span class="highlight">提示</span> 如果页面内容有调整，通常会在首页标注更新时间；建议偶尔清缓存或刷新，确保看到最新版本。</p>
+    </div>
+
+    <!-- FAQ 摘要风格（简洁、克制） -->
+    <div class="faq-mini">
+      <span>页面加载慢？检查本地网络</span>
+      <span>内容多久更新？依项目而定</span>
+      <span>移动端适配良好</span>
+    </div>
+
+    <div class="footer-remark">
+      保持关注 · <a href="https://app-m-i-game.com.cn">爱游戏</a> · 体验为轻
+    </div>
+  </div>
+</body>
+</html>
